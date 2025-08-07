@@ -1,0 +1,13 @@
+:root {
+    --scroll-to-top-size: 50px;
+    --scroll-to-top-color: white;
+    --scroll-to-top-bg-color: #007bff;
+    --scroll-to-top-hover-color: #f8f9fa;
+    --scroll-to-top-border-radius: 50%;
+    --scroll-to-top-opacity: 0.8;
+    --scroll-to-top-hover-opacity: 1;
+    --scroll-to-top-margin-right: 20px;
+    --scroll-to-top-margin-bottom: 25px;
+    --scroll-to-top-hover-bg-color: #0056b3;
+    --scroll-to-top-hover-maring-bottom: 30px;
+}
