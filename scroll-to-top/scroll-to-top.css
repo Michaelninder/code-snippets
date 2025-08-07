@@ -4,6 +4,7 @@ body {
 
 #scroll-to-top {
   position: fixed;
+  pointer-events: none;
   bottom: var(--scroll-to-top-margin-bottom);
   right: var(--scroll-to-top-margin-right);
   width: var(--scroll-to-top-size);
@@ -15,11 +16,11 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  opacity: var(--scroll-to-top-opacity);
+  opacity: 0;
   transition:
-    opacity 0.3s ease-in-out,
     background-color 0.2s ease-in-out,
-    bottom 0.3s ease-in-out;
+    bottom 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
 }
 
 #scroll-to-top:hover {
@@ -29,7 +30,9 @@ body {
   bottom: var(--scroll-to-top-hover-maring-bottom);
 }
 
-#scroll-to-top.hidden {
-  opacity: 0;
-  pointer-events: none;
+
+
+#scroll-to-top.visible {
+  opacity: var(--scroll-to-top-opacity);
+  pointer-events: auto;
 }
