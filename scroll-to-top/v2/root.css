@@ -1,0 +1,5 @@
+:root {
+    --scroll-to-top-btn-bg: rgba(1, 1, 1, 0.502);
+    --scroll-to-top-btn-bottom-distance: 50px;
+    --scroll-to-top-btn-color: white;
+}

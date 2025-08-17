@@ -1,5 +1,9 @@
 body {
-  min-height: 200%;
+  min-height: 500%; /* for test-purpose */
+}
+
+.hidden {
+  display: none;
 }
 
 #scroll-to-top {

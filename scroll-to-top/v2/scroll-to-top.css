@@ -1,0 +1,19 @@
+#scroll-to-top-btn {
+    background-color: var(--scroll-to-top-btn-bg);
+    position: fixed;
+    bottom: var(--scroll-to-top-btn-bottom-distance);
+    right: 0;
+    border-radius: 12px 0px 0px 12px;
+    padding: 12px;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+#scroll-to-top-btn i {
+    color: var(--scroll-to-top-btn-color);
+    cursor: pointer;
+}
+
+#scroll-to-top-btn:hover {
+    padding-inline: 17px;
+}
