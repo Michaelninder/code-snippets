@@ -8,5 +8,11 @@ const handleScroll = () => {
     }
 };
 
+const scrollToTop = () => {
+    window.scrollY = 0;
+    handleScroll();
+}
+
+scrollToTopBtn.addEventListener('click', scrollToTop);
 document.addEventListener('scroll', handleScroll);
 document.addEventListener('DOMContentLoaded', handleScroll);
