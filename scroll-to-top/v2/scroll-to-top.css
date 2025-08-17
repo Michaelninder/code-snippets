@@ -1,11 +1,12 @@
 #scroll-to-top-btn {
+    display: none;
     background-color: var(--scroll-to-top-btn-bg);
     position: fixed;
     bottom: var(--scroll-to-top-btn-bottom-distance);
     right: 0;
     border-radius: 12px 0px 0px 12px;
     padding: 12px;
-    transition-duration: 1s;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
 
@@ -16,4 +17,9 @@
 
 #scroll-to-top-btn:hover {
     padding-inline: 17px;
+    background-color: var(--scroll-to-top-btn-hover-bg);
+}
+
+#scroll-to-top-btn.shown {
+    display: block;
 }
