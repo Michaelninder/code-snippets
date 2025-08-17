@@ -9,9 +9,11 @@ const handleScroll = () => {
 };
 
 const scrollToTop = () => {
-    window.scrollY = 0;
-    handleScroll();
-}
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+};
 
 scrollToTopBtn.addEventListener('click', scrollToTop);
 document.addEventListener('scroll', handleScroll);

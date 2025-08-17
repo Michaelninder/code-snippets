@@ -1,12 +1,14 @@
 #scroll-to-top-btn {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     background-color: var(--scroll-to-top-btn-bg);
     position: fixed;
     bottom: var(--scroll-to-top-btn-bottom-distance);
     right: 0;
     border-radius: 12px 0px 0px 12px;
     padding: 12px;
-    transition: all 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
+        padding 0.3s ease-in-out, background-color 0.3s ease-in-out;
     cursor: pointer;
 }
 
@@ -21,5 +23,6 @@
 }
 
 #scroll-to-top-btn.shown {
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
