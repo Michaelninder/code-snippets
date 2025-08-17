@@ -1,1 +1,3 @@
 # code-snippets
+
+to this inofficial-scholl-website: Add chatsystem (start by creating model Chat -mfrc(migration, factory, resourceController) ... also: create ChatMenber, ChatInvitation, ChatMessage, ... IMPORTANT: ChatMessages that are deleted just have a changed "is_deleted" or "deleted" or ... varible in db. (same for chat_chats) ....  ||| folders: Controllers/Chat/*Controller, views/chat/.... ||  Also: ALL uuid-based, ChatSettings, ChatMembers have roles...(admin, member, viewer), new model: ChatInvitationLink... || create layouts.chat (extends to layoits.app) and includes components.chat-nav(sidenav)
