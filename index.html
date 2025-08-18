@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippets</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .snippet-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        .snippet {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .snippet h2 {
+            margin: 0;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            font-size: 1.2em;
+        }
+        .snippet iframe {
+            display: block;
+            border: none;
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code Snippets Showcase</h1>
+    <div class="snippet-container">
+        <div class="snippet">
+            <h2>Preloader v1</h2>
+            <iframe src="preloader/v1/index.html"></iframe>
+        </div>
+        <div class="snippet">
+            <h2>Scroll To Top v1</h2>
+            <iframe src="scroll-to-top/v1/index.html"></iframe>
+        </div>
+        <div class="snippet">
+            <h2>Scroll To Top v2</h2>
+            <iframe src="scroll-to-top/v2/index.html"></iframe>
+        </div>
+    </div>
+</body>
+</html>
