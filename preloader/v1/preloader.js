@@ -10,8 +10,8 @@ window.addEventListener('load', () => {
     const remainingTime = minLoadTime - elapsedTime;
 
     const hidePreloader = () => {
-        preloader.style.display = 'none';
-        content.style.display = 'block';
+        preloader.classList.add('hidden');
+        content.classList.add('visible');
     };
 
     if (remainingTime > 0) {
