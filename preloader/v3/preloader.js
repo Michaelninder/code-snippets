@@ -1,6 +1,6 @@
 window.addEventListener('load', function() {
     const preloader = document.querySelector('.preloader');
-    const minDisplayTime = 500;
+    const minDisplayTime = 1500;
     const startTime = Date.now();
     function hidePreloader() {
         const elapsedTime = Date.now() - startTime;

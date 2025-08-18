@@ -1,0 +1,12 @@
+body {
+    min-height: 500%;
+}
+
+:root {
+    --scoll-to-top-btn-bg-color: rgba(255, 0, 0, 0.54321);
+    --scroll-to-top-btn-border-color: red;
+    --scroll-to-top-btn-icon-color: white;
+    --scroll-to-top-btn-hover-bg-color: rgba(255, 0, 0, 0.8);
+    --scroll-to-top-btn-hover-border-color: darkred;
+    --scroll-to-top-btn-hover-icon-color: yellow;
+}
