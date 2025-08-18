@@ -23,10 +23,10 @@
     opacity: 1;
 }
 
-.spinner {
+.pulse {
     width: 15px;
     height: 15px;
-    background-color: var(--preloader-spinner-color, #f9f9f9);
+    background-color: var(--preloader-pulse-color, #f9f9f9);
     border-radius: 50%;
     animation: pulsate 1.2s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
