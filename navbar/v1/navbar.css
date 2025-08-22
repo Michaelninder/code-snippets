@@ -1,0 +1,78 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 30px;
+    padding-block: var(--navbar-initial-padding-block);
+    margin-top: var(--navbar-initial-margin-top);
+    width: var(--navbar-initial-width);
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+body.lander .navbar {
+    transition:
+        margin-top var(--navbar-transition-speed),
+        width var(--navbar-transition-speed),
+        background-color var(--navbar-transition-speed),
+        backdrop-filter var(--navbar-transition-speed),
+        border-radius var(--navbar-transition-speed),
+        box-shadow var(--navbar-transition-speed),
+        padding-block var(--navbar-transition-speed);
+}
+
+
+.navbar-scrolled {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: var(--navbar-scrolled-margin-top);
+    width: var(--navbar-scrolled-width);
+    background-color: var(--navbar-scrolled-background);
+    backdrop-filter: var(--navbar-scrolled-backdrop-filter);
+    border-radius: var(--navbar-scrolled-border-radius);
+    box-shadow: var(--navbar-scrolled-box-shadow);
+    padding-block: var(--navbar-scrolled-padding-block);
+}
+
+.nav-logo img {
+    height: 40px;
+    vertical-align: middle;
+}
+
+.nav-items a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+#content-spacer {
+    transition: margin-top var(--navbar-transition-speed);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding-inline: 20px;
+        padding-block: calc(var(--navbar-initial-padding-block) - 10px);
+    }
+    .nav-logo img {
+        height: 30px;
+    }
+    .nav-items {
+        display: none;
+    }
+    .navbar-scrolled {
+        width: 90%;
+        padding-block: calc(var(--navbar-scrolled-padding-block) - 5px);
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-scrolled {
+        width: 98%;
+        margin-top: 10px;
+        padding-block: calc(var(--navbar-scrolled-padding-block) - 8px);
+    }
+}

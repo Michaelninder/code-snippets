@@ -1,0 +1,20 @@
+body {
+    min-height: 500%;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+:root {
+    --navbar-initial-margin-top: 0px;
+    --navbar-scrolled-margin-top: 20px;
+    --navbar-initial-width: 100%;
+    --navbar-scrolled-width: 95%;
+    --navbar-initial-padding-block: 35px;
+    --navbar-scrolled-padding-block: 15px;
+    --navbar-initial-background: transparent;
+    --navbar-scrolled-background: rgba(255, 255, 255, 0.8);
+    --navbar-scrolled-backdrop-filter: blur(10px);
+    --navbar-scrolled-border-radius: 10px;
+    --navbar-scrolled-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --navbar-transition-speed: 0.3s ease-in-out;
+}
