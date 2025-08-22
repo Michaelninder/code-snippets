@@ -1,0 +1,11 @@
+/* root.css */
+:root {
+    --navbar-height: 80px;
+}
+
+body {
+    min-height: 500%;
+    margin: 0;
+    font-family: sans-serif;
+    margin-top: var(--navbar-height);
+}

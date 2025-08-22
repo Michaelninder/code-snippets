@@ -1,0 +1,31 @@
+.navbar {
+    width: 100%;
+    height: var(--navbar-height);
+    padding: 20px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    width: 70%;
+    border-radius: 0 0 22px 22px;
+    border: 1px solid red;
+    border-top: none;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar img {
+    height: calc(var(--navbar-height) - 40px);
+    max-height: 100%;
+    display: block;
+}
