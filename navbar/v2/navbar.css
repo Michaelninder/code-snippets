@@ -12,7 +12,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .navbar.scrolled {
@@ -28,4 +28,21 @@
     height: calc(var(--navbar-height) - 40px);
     max-height: 100%;
     display: block;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    /*margin-inline: 4px;*/
+    padding-inline: 4px;
+    font-size: 1.1rem;
+    transition-duration: .2s;
+}
+
+.navbar a:hover {
+    color: rgb(200, 200, 200);
+}
+
+.navbar {
+    cursor: default;
 }
