@@ -10,10 +10,13 @@
             --light-base-color: #007BFF;
             --light-primary-color: var(--light-base-color);
             --light-background-color: oklch(
-                from var(--light-base-color) calc(l + 0.5) 0 0
+                from var(--light-base-color) calc(l + 0.4) 0.02 240
             );
-            --light-text-color: oklch(from var(--light-base-color) 0.2 0 0);
+            --light-text-color: oklch(from var(--light-base-color) 0.2 0.05 240);
             --light-link-color: var(--light-primary-color);
+            --light-secondary-color: oklch(
+                from var(--light-base-color) l calc(c - 0.05) h
+            );
 
             --dark-base-color: #007BFF;
             --dark-primary-color: var(--dark-base-color);
@@ -38,7 +41,12 @@
             color: light-dark(var(--light-text-color), var(--dark-text-color));
         }
 
-        h1 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             color: light-dark(var(--light-text-color), var(--dark-text-color));
         }
 
@@ -57,14 +65,91 @@
         a:hover {
             text-decoration: underline;
         }
+
+        button {
+            background-color: light-dark(
+                var(--light-primary-color),
+                var(--dark-primary-color)
+            );
+            color: light-dark(
+                oklch(from var(--light-primary-color) 0.98 0 0),
+                oklch(from var(--dark-primary-color) 0.1 0 0)
+            );
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        [popover] {
+            padding: 15px;
+            border: 1px solid
+                light-dark(var(--light-primary-color), var(--dark-primary-color));
+            border-radius: 8px;
+            background-color: light-dark(
+                var(--light-background-color),
+                var(--dark-background-color)
+            );
+            color: light-dark(var(--light-text-color), var(--dark-text-color));
+        }
     </style>
 </head>
 <body>
-    <h1>Test 01</h1>
-    <p>This is a simple HTML test page.</p>
-    <p>
-        For more information, visit
-        <a href="https://www.example.com">Example.com</a>.
-    </p>
+    <header>
+        <h1>Welcome to My Test Page</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>This is a simple HTML test page with more content.</p>
+            <p>
+                Learn more about us on
+                <a href="https://www.example.com">Example.com</a>.
+            </p>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <p>We offer a variety of services to meet your needs.</p>
+            <ul>
+                <li>Web Development</li>
+                <li>Design</li>
+                <li>Consulting</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Feel free to reach out to us for any inquiries.</p>
+            <address>
+                Email:
+                <a href="mailto:info@example.com">info@example.com</a><br>
+                Phone: <a href="tel:+1234567890">123-456-7890</a>
+            </address>
+        </section>
+
+        <button popovertarget="mypopover">Toggle the popover</button>
+        <div id="mypopover" popover>
+            <h3>Popover Content</h3>
+            <p>This is some content inside the popover.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Test Page. All rights reserved.</p>
+    </footer>
 </body>
 </html>
