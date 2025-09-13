@@ -9,59 +9,33 @@
 
             --base-color: #007BFF;
 
-            --light-base-color: oklch(
-                from var(--base-color) l calc(c * 1.2) h
-            );
+            --light-base-color: oklch(from var(--base-color) l calc(c * 1.2) h);
             --light-primary-color: var(--light-base-color);
-            --light-background-color: oklch(
-                from var(--light-base-color) calc(l + 0.4) 0.02 240
-            );
-            --light-text-color: oklch(from var(--light-base-color) 0.2 0.05 240);
+            --light-background-color: oklch(from var(--light-base-color) 97% 0.02 240);
+            --light-text-color: oklch(from var(--light-base-color) 15% 0.05 240);
             --light-link-color: var(--light-primary-color);
-            --light-secondary-color: oklch(
-                from var(--light-base-color) l calc(c - 0.05) h
-            );
-            --light-container-background-color: oklch(
-                from var(--light-background-color) l calc(c + 0.01) h
-            );
-            --light-popover-background-color: oklch(
-                from var(--light-container-background-color) l + 0.02 c h / 0.8
-            );
-            --light-nav-footer-background-color: oklch(
-                from var(--light-background-color) l - 0.05 c h / 0.8
-            );
-            --light-border-color: oklch(
-                from var(--light-primary-color) l calc(c - 0.08) h
-            );
+            --light-secondary-color: oklch(from var(--light-base-color) 70% 0.08 270);
+            --light-container-background-color: oklch(from var(--light-background-color) 99% 0.01 240);
+            --light-popover-background-color: oklch(from var(--light-container-background-color) 99% 0.01 240 / 0.85);
+            --light-nav-footer-background-color: oklch(from var(--light-background-color) 90% 0.03 240 / 0.85);
+            --light-border-color: oklch(from var(--light-primary-color) 75% 0.1 240);
+            --light-hover-color: oklch(from var(--light-primary-color) 85% 0.15 240);
 
-            --dark-base-color: oklch(
-                from var(--base-color) l calc(c * 1.2) h
-            );
+            --dark-base-color: oklch(from var(--base-color) l calc(c * 1.2) h);
             --dark-primary-color: var(--dark-base-color);
-            --dark-background-color: oklch(
-                from var(--dark-base-color) calc(l - 0.5) c h
-            );
-            --dark-text-color: oklch(from var(--dark-base-color) 0.9 0 0);
+            --dark-background-color: oklch(from var(--dark-base-color) 10% 0.03 240);
+            --dark-text-color: oklch(from var(--dark-base-color) 90% 0.01 240);
             --dark-link-color: var(--dark-primary-color);
-            --dark-secondary-color: oklch(
-                from var(--dark-base-color) l calc(c - 0.05) h
-            );
-            --dark-container-background-color: oklch(
-                from var(--dark-background-color) l calc(c + 0.01) h
-            );
-            --dark-popover-background-color: oklch(
-                from var(--dark-container-background-color) l - 0.02 c h / 0.8
-            );
-            --dark-nav-footer-background-color: oklch(
-                from var(--dark-background-color) l + 0.05 c h / 0.8
-            );
-            --dark-border-color: oklch(
-                from var(--dark-primary-color) l calc(c - 0.08) h
-            );
+            --dark-secondary-color: oklch(from var(--dark-base-color) 30% 0.08 270);
+            --dark-container-background-color: oklch(from var(--dark-background-color) 12% 0.02 240);
+            --dark-popover-background-color: oklch(from var(--dark-container-background-color) 12% 0.02 240 / 0.85);
+            --dark-nav-footer-background-color: oklch(from var(--dark-background-color) 8% 0.04 240 / 0.85);
+            --dark-border-color: oklch(from var(--dark-primary-color) 25% 0.1 240);
+            --dark-hover-color: oklch(from var(--dark-primary-color) 18% 0.15 240);
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: light-dark(
@@ -69,6 +43,10 @@
                 var(--dark-background-color)
             );
             color: light-dark(var(--light-text-color), var(--dark-text-color));
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         h1,
@@ -78,22 +56,42 @@
         h5,
         h6 {
             color: light-dark(var(--light-text-color), var(--dark-text-color));
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid
+                light-dark(var(--light-border-color), var(--dark-border-color));
+            padding-bottom: 0.3em;
+            margin-bottom: 1em;
         }
 
         p {
             color: light-dark(
-                oklch(from var(--light-text-color) calc(l + 0.2) c h),
-                oklch(from var(--dark-text-color) calc(l + 0.2) c h)
+                oklch(from var(--light-text-color) calc(l + 0.15) c h),
+                oklch(from var(--dark-text-color) calc(l - 0.15) c h)
             );
+            margin-bottom: 1em;
         }
 
         a {
             color: light-dark(var(--light-link-color), var(--dark-link-color));
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         a:hover {
             text-decoration: underline;
+            color: light-dark(
+                oklch(from var(--light-link-color) l - 0.1 c h),
+                oklch(from var(--dark-link-color) l + 0.1 c h)
+            );
         }
 
         header,
@@ -103,6 +101,7 @@
                 var(--dark-nav-footer-background-color)
             );
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 15px 20px;
             color: light-dark(var(--light-text-color), var(--dark-text-color));
         }
@@ -112,6 +111,14 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
         }
 
         nav ul {
@@ -123,21 +130,32 @@
         }
 
         nav a {
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            color: light-dark(var(--light-link-color), var(--dark-link-color));
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease;
+            color: light-dark(
+                var(--light-text-color),
+                var(--dark-text-color)
+            );
+            font-weight: bold;
         }
 
         nav a:hover {
             background-color: light-dark(
-                oklch(from var(--light-nav-footer-background-color) l - 0.05 c h),
-                oklch(from var(--dark-nav-footer-background-color) l + 0.05 c h)
+                var(--light-hover-color),
+                var(--dark-hover-color)
+            );
+            color: light-dark(
+                oklch(from var(--light-hover-color) 0.1 0 0),
+                oklch(from var(--dark-hover-color) 0.9 0 0)
             );
             text-decoration: none;
         }
 
         main {
+            flex: 1;
             padding: 20px;
             max-width: 900px;
             margin: 20px auto;
@@ -145,8 +163,8 @@
                 var(--light-container-background-color),
                 var(--dark-container-background-color)
             );
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         section {
@@ -172,36 +190,43 @@
                 oklch(from var(--dark-primary-color) 0.1 0 0)
             );
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 25px;
             cursor: pointer;
             margin-top: 10px;
             font-size: 1rem;
-            transition: background-color 0.3s ease;
+            font-weight: bold;
+            transition:
+                background-color 0.3s ease,
+                transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         button:hover {
-            opacity: 0.9;
+            opacity: 0.95;
+            transform: translateY(-2px);
         }
 
         [popover] {
-            padding: 15px;
+            padding: 15px 20px;
             border: 1px solid
                 light-dark(var(--light-border-color), var(--dark-border-color));
-            border-radius: 8px;
+            border-radius: 10px;
             background-color: light-dark(
                 var(--light-popover-background-color),
                 var(--dark-popover-background-color)
             );
             color: light-dark(var(--light-text-color), var(--dark-text-color));
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            max-width: 300px;
         }
 
         .fixed-item {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background-color: light-dark(
                 var(--light-secondary-color),
                 var(--dark-secondary-color)
@@ -210,38 +235,107 @@
                 oklch(from var(--light-secondary-color) 0.1 0 0),
                 oklch(from var(--dark-secondary-color) 0.9 0 0)
             );
-            padding: 10px 15px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border-radius: 50%;
-            text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition:
+                background-color 0.3s ease,
+                transform 0.2s ease,
+                box-shadow 0.3s ease;
             z-index: 1001;
         }
 
         .fixed-item:hover {
-            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            opacity: 1;
         }
 
         footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid
+                light-dark(var(--light-border-color), var(--dark-border-color));
             z-index: 999;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+            color: light-dark(
+                oklch(from var(--light-text-color) calc(l + 0.1) c h),
+                oklch(from var(--dark-text-color) calc(l - 0.1) c h)
+            );
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        address {
+            font-style: normal;
+            margin-top: 1em;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid
+                light-dark(var(--light-border-color), var(--dark-border-color));
+            margin: 2em 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Test Page</h1>
+        <h1>My Awesome Site</h1>
         <nav>
             <ul>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <section id="home">
+            <h2>Welcome</h2>
+            <p>
+                Discover a world of possibilities with our cutting-edge solutions.
+                We are committed to excellence and innovation.
+            </p>
+            <p>
+                Explore our site to learn more about what we do and how we can
+                help you achieve your goals.
+            </p>
+            <button popovertarget="welcomePopover">Learn More</button>
+            <div id="welcomePopover" popover>
+                <h3>Our Vision</h3>
+                <p>
+                    We aim to revolutionize the industry by continuously pushing the
+                    boundaries of technology and creativity.
+                </p>
+            </div>
+        </section>
+
+        <hr>
+
         <section id="about">
             <h2>About Us</h2>
             <p>This is a simple HTML test page with more content.</p>
@@ -263,6 +357,8 @@
                 </p>
             </div>
         </section>
+
+        <hr>
 
         <section id="services">
             <h2>Our Services</h2>
@@ -286,6 +382,58 @@
                 </p>
             </div>
         </section>
+
+        <hr>
+
+        <section id="portfolio">
+            <h2>Our Portfolio</h2>
+            <p>
+                Take a look at some of our recent projects. We pride ourselves on
+                delivering visually stunning and highly functional solutions.
+            </p>
+            <div class="gallery">
+                <!-- Placeholder for images/project cards -->
+                <p>Project 1 | Project 2 | Project 3</p>
+            </div>
+            <button popovertarget="portfolioPopover">View All Projects</button>
+            <div id="portfolioPopover" popover>
+                <h3>Portfolio Highlights</h3>
+                <p>
+                    We've worked with diverse clients across various industries,
+                    delivering impactful digital experiences.
+                </p>
+                <p>Contact us for a personalized showcase of our work.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="blog">
+            <h2>Latest Blog Posts</h2>
+            <article>
+                <h3><a href="#">The Future of Web Development</a></h3>
+                <p>
+                    Exploring new trends and technologies that will shape the web
+                    in the coming years.
+                </p>
+                <span>Read more...</span>
+            </article>
+            <article>
+                <h3><a href="#">Designing for Accessibility</a></h3>
+                <p>
+                    Ensuring your web applications are usable by everyone,
+                    regardless of ability.
+                </p>
+                <span>Read more...</span>
+            </article>
+            <button popovertarget="blogPopover">All Blog Posts</button>
+            <div id="blogPopover" popover>
+                <h3>Blog Archive</h3>
+                <p>Find more articles on a wide range of topics.</p>
+            </div>
+        </section>
+
+        <hr>
 
         <section id="contact">
             <h2>Contact Us</h2>
@@ -314,7 +462,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Test Page. All rights reserved.</p>
+        <p>&copy; 2025 My Awesome Site. All rights reserved.</p>
     </footer>
 </body>
 </html>
