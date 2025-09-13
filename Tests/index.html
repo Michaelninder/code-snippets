@@ -7,7 +7,11 @@
         :root {
             color-scheme: light dark;
 
-            --light-base-color: #007BFF;
+            --base-color: #007BFF;
+
+            --light-base-color: oklch(
+                from var(--base-color) l calc(c * 1.2) h
+            );
             --light-primary-color: var(--light-base-color);
             --light-background-color: oklch(
                 from var(--light-base-color) calc(l + 0.4) 0.02 240
@@ -17,8 +21,22 @@
             --light-secondary-color: oklch(
                 from var(--light-base-color) l calc(c - 0.05) h
             );
+            --light-container-background-color: oklch(
+                from var(--light-background-color) l calc(c + 0.01) h
+            );
+            --light-popover-background-color: oklch(
+                from var(--light-container-background-color) l + 0.02 c h / 0.8
+            );
+            --light-nav-footer-background-color: oklch(
+                from var(--light-background-color) l - 0.05 c h / 0.8
+            );
+            --light-border-color: oklch(
+                from var(--light-primary-color) l calc(c - 0.08) h
+            );
 
-            --dark-base-color: #007BFF;
+            --dark-base-color: oklch(
+                from var(--base-color) l calc(c * 1.2) h
+            );
             --dark-primary-color: var(--dark-base-color);
             --dark-background-color: oklch(
                 from var(--dark-base-color) calc(l - 0.5) c h
@@ -28,12 +46,24 @@
             --dark-secondary-color: oklch(
                 from var(--dark-base-color) l calc(c - 0.05) h
             );
+            --dark-container-background-color: oklch(
+                from var(--dark-background-color) l calc(c + 0.01) h
+            );
+            --dark-popover-background-color: oklch(
+                from var(--dark-container-background-color) l - 0.02 c h / 0.8
+            );
+            --dark-nav-footer-background-color: oklch(
+                from var(--dark-background-color) l + 0.05 c h / 0.8
+            );
+            --dark-border-color: oklch(
+                from var(--dark-primary-color) l calc(c - 0.08) h
+            );
         }
 
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: light-dark(
                 var(--light-background-color),
                 var(--dark-background-color)
@@ -66,6 +96,72 @@
             text-decoration: underline;
         }
 
+        header,
+        footer {
+            background-color: light-dark(
+                var(--light-nav-footer-background-color),
+                var(--dark-nav-footer-background-color)
+            );
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            color: light-dark(var(--light-text-color), var(--dark-text-color));
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            color: light-dark(var(--light-link-color), var(--dark-link-color));
+        }
+
+        nav a:hover {
+            background-color: light-dark(
+                oklch(from var(--light-nav-footer-background-color) l - 0.05 c h),
+                oklch(from var(--dark-nav-footer-background-color) l + 0.05 c h)
+            );
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: light-dark(
+                var(--light-container-background-color),
+                var(--dark-container-background-color)
+            );
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid
+                light-dark(var(--light-border-color), var(--dark-border-color));
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
         button {
             background-color: light-dark(
                 var(--light-primary-color),
@@ -80,6 +176,8 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
@@ -89,13 +187,45 @@
         [popover] {
             padding: 15px;
             border: 1px solid
-                light-dark(var(--light-primary-color), var(--dark-primary-color));
+                light-dark(var(--light-border-color), var(--dark-border-color));
             border-radius: 8px;
             background-color: light-dark(
-                var(--light-background-color),
-                var(--dark-background-color)
+                var(--light-popover-background-color),
+                var(--dark-popover-background-color)
             );
             color: light-dark(var(--light-text-color), var(--dark-text-color));
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        .fixed-item {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: light-dark(
+                var(--light-secondary-color),
+                var(--dark-secondary-color)
+            );
+            color: light-dark(
+                oklch(from var(--light-secondary-color) 0.1 0 0),
+                oklch(from var(--dark-secondary-color) 0.9 0 0)
+            );
+            padding: 10px 15px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease;
+            z-index: 1001;
+        }
+
+        .fixed-item:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            z-index: 999;
         }
     </style>
 </head>
@@ -119,6 +249,19 @@
                 Learn more about us on
                 <a href="https://www.example.com">Example.com</a>.
             </p>
+            <button popovertarget="aboutPopover">More About Us</button>
+            <div id="aboutPopover" popover>
+                <h3>Detailed About Information</h3>
+                <p>
+                    We are dedicated to providing excellent services and
+                    innovative solutions. Our team is passionate about creating
+                    high-quality products.
+                </p>
+                <p>
+                    Founded in 2023, our mission has always been to simplify complex
+                    problems for our clients.
+                </p>
+            </div>
         </section>
 
         <section id="services">
@@ -128,7 +271,20 @@
                 <li>Web Development</li>
                 <li>Design</li>
                 <li>Consulting</li>
+                <li>Cloud Hosting</li>
+                <li>IT Support</li>
             </ul>
+            <button popovertarget="servicesPopover">Service Details</button>
+            <div id="servicesPopover" popover>
+                <h3>Our Service Offerings</h3>
+                <p>
+                    From initial concept to deployment and ongoing support, we've
+                    got you covered. We specialize in custom web applications.
+                </p>
+                <p>
+                    Our design team focuses on user experience and modern aesthetics.
+                </p>
+            </div>
         </section>
 
         <section id="contact">
@@ -137,16 +293,25 @@
             <address>
                 Email:
                 <a href="mailto:info@example.com">info@example.com</a><br>
-                Phone: <a href="tel:+1234567890">123-456-7890</a>
+                Phone: <a href="tel:+1234567890">123-456-7890</a><br>
+                Address: 123 Main Street, Anytown, USA
             </address>
         </section>
 
-        <button popovertarget="mypopover">Toggle the popover</button>
-        <div id="mypopover" popover>
-            <h3>Popover Content</h3>
-            <p>This is some content inside the popover.</p>
+        <button popovertarget="mainPopover">Toggle Main Popover</button>
+        <div id="mainPopover" popover>
+            <h3>Main Popover Content</h3>
+            <p>This popover is located in the main section.</p>
+            <p>It can contain various types of information or interactive elements.</p>
         </div>
     </main>
+
+    <button class="fixed-item" popovertarget="fixedPopover">?</button>
+    <div id="fixedPopover" popover>
+        <h3>Help & Information</h3>
+        <p>This is a fixed popover for general help or quick actions.</p>
+        <p>Click the '?' icon to toggle this popover.</p>
+    </div>
 
     <footer>
         <p>&copy; 2025 Test Page. All rights reserved.</p>
