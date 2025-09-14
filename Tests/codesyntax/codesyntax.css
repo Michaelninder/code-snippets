@@ -5,7 +5,7 @@
     --code-header-background: #21262d;
     --code-header-text: #8b949e;
     
-    /* Text Colors */
+    /* Text Colors - General */
     --code-text-default: #d4d4d4;
     --code-text-comment: #6a9955;
     --code-text-keyword: #569cd6;
@@ -20,15 +20,27 @@
     --code-text-regex: #d16969;
     --code-text-punctuation: #808080;
     
-    /* Special Colors */
+    /* Special Colors - General */
     --code-text-boolean: #569cd6;
     --code-text-null: #569cd6;
     --code-text-class: #4ec9b0;
     --code-text-constant: #4fc1ff;
+
+    /* Language-specific overrides */
+    --code-php-tag: #569cd6;
+    --code-css-selector: #ffd700;
+    --code-html-doctype: var(--code-text-comment);
+
+    /* Optional: Specific type overrides for languages */
+    --code-php-string: green;
+    --code-js-number: lime;
+    --code-css-comment: var(--code-text-comment);
+    --code-python-keyword: pink;
     
     /* Selection Colors */
-    --code-select-background: #264f78;
-    --code-select-color: var(--code-text-default);
+    --code-select-background: white;
+    /*--code-select-color: var(--code-text-default);*/
+    --code-select-color: var(--code-border-color);
 }
 
 body {
@@ -85,7 +97,7 @@ code::selection {
     color: var(--code-select-color);
 }
 
-/* Syntax highlighting classes */
+/* Syntax highlighting classes - General */
 .comment { color: var(--code-text-comment); font-style: italic; }
 .keyword { color: var(--code-text-keyword); font-weight: bold; }
 .string { color: var(--code-text-string); }
@@ -103,6 +115,13 @@ code::selection {
 .class { color: var(--code-text-class); font-weight: bold; }
 .constant { color: var(--code-text-constant); font-weight: bold; }
 
-/* Language-specific adjustments */
-.language-php .php-tag { color: #569cd6; font-weight: bold; }
-.language-css .selector { color: #ffd700; }
+
+/* Language-specific overrides for general types */
+.language-php .php-tag { color: var(--code-php-tag); font-weight: bold; }
+.language-css .selector { color: var(--code-css-selector); }
+
+/* Optional: Language-specific overrides for common types */
+.language-php .string { color: var(--code-php-string); }
+.language-javascript .number { color: var(--code-js-number); }
+.language-css .comment { color: var(--code-css-comment); }
+.language-python .keyword { color: var(--code-python-keyword); }
