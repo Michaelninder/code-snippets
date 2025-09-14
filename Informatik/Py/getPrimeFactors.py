@@ -5,7 +5,6 @@ factors = getPrimeFactors(num)
 print(f"Prime factors of {num} are: {factors}")
 
 def getPrimeList(n):
-    # Erzeugt eine Liste aller Primzahlen kleiner oder gleich worzel(n).
     primes = []
     for num in range(2, int(math.isqrt(n)) + 1):
         is_prime = True
@@ -18,7 +17,6 @@ def getPrimeList(n):
     return primes
 
 def getPrimeFactors(num):
-    # Gibt die Primfaktoren von num als Liste zurück.
     primeList = getPrimeList(num)
     numPrimeFactors = []
     primeIndex = 0
@@ -31,7 +29,6 @@ def getPrimeFactors(num):
         else:
             primeIndex += 1
 
-    # Falls nach der Teilung noch ein Rest übrig ist, ist dieser selbst eine Primzahl
     if num > 1:
         numPrimeFactors.append(num)
 

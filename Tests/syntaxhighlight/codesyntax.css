@@ -1,0 +1,108 @@
+:root {
+    /* Code Container Colors */
+    --code-background: #1e1e1e;
+    --code-border-color: #333;
+    --code-header-background: #21262d;
+    --code-header-text: #8b949e;
+    
+    /* Text Colors */
+    --code-text-default: #d4d4d4;
+    --code-text-comment: #6a9955;
+    --code-text-keyword: #569cd6;
+    --code-text-string: #ce9178;
+    --code-text-number: #b5cea8;
+    --code-text-function: #dcdcaa;
+    --code-text-variable: #9cdcfe;
+    --code-text-operator: #d4d4d4;
+    --code-text-tag: #569cd6;
+    --code-text-attribute: #92c5f8;
+    --code-text-property: #9cdcfe;
+    --code-text-regex: #d16969;
+    --code-text-punctuation: #808080;
+    
+    /* Special Colors */
+    --code-text-boolean: #569cd6;
+    --code-text-null: #569cd6;
+    --code-text-class: #4ec9b0;
+    --code-text-constant: #4fc1ff;
+    
+    /* Selection Colors */
+    --code-select-background: #264f78;
+    --code-select-color: var(--code-text-default);
+}
+
+body {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    background: #0d1117;
+    color: #c9d1d9;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #58a6ff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.code-container {
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.code-header {
+    background: var(--code-header-background);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--code-border-color);
+    font-size: 14px;
+    color: var(--code-header-text);
+    font-weight: 500;
+}
+
+pre {
+    background: var(--code-background);
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    position: relative;
+}
+
+code {
+    display: block;
+    padding: 15px;
+    color: var(--code-text-default);
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre;
+    user-select: text;
+}
+
+code::selection {
+    background: var(--code-select-background);
+    color: var(--code-select-color);
+}
+
+/* Syntax highlighting classes */
+.comment { color: var(--code-text-comment); font-style: italic; }
+.keyword { color: var(--code-text-keyword); font-weight: bold; }
+.string { color: var(--code-text-string); }
+.number { color: var(--code-text-number); }
+.function { color: var(--code-text-function); }
+.variable { color: var(--code-text-variable); }
+.operator { color: var(--code-text-operator); }
+.tag { color: var(--code-text-tag); font-weight: bold; }
+.attribute { color: var(--code-text-attribute); }
+.property { color: var(--code-text-property); }
+.regex { color: var(--code-text-regex); }
+.punctuation { color: var(--code-text-punctuation); }
+.boolean { color: var(--code-text-boolean); font-weight: bold; }
+.null { color: var(--code-text-null); font-weight: bold; }
+.class { color: var(--code-text-class); font-weight: bold; }
+.constant { color: var(--code-text-constant); font-weight: bold; }
+
+/* Language-specific adjustments */
+.language-php .php-tag { color: #569cd6; font-weight: bold; }
+.language-css .selector { color: #ffd700; }

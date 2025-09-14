@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Syntax Highlighter</title>
+    <link rel="stylesheet" href="codesyntax.css">
+</head>
+<body>
+    <h1>Code Syntax Highlighter</h1>
+    
+    <div class="code-container">
+        <div class="code-header">JavaScript</div>
+        <pre><code class="language-javascript">
+// Example JavaScript code
+function greet(name) {
+    console.log("Hello, " + name + "!");
+    return `Welcome ${name}!`;
+}
+
+const users = ['Alice', 'Bob', 'Charlie'];
+const isActive = true;
+const count = 42;
+
+users.forEach(user => greet(user));
+        </code></pre>
+    </div>
+
+    <div class="code-container">
+        <div class="code-header">PHP</div>
+        <pre><code class="language-php">
+<?php
+// PHP example with various syntax elements
+class UserManager {
+    private $users = [];
+    
+    public function addUser($name, $email) {
+        $user = [
+            'id' => count($this->users) + 1,
+            'name' => $name,
+            'email' => $email,
+            'active' => true
+        ];
+        
+        $this->users[] = $user;
+        return $user['id'];
+    }
+    
+    public function getUser($id) {
+        foreach ($this->users as $user) {
+            if ($user['id'] == $id) {
+                return $user;
+            }
+        }
+        return null;
+    }
+}
+
+$manager = new UserManager();
+$userId = $manager->addUser("John Doe", "john@example.com");
+echo "Created user with ID: " . $userId;
+?>
+        </code></pre>
+    </div>
+
+    <div class="code-container">
+        <div class="code-header">CSS</div>
+        <pre><code class="language-css">
+/* CSS styling example */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}
+        </code></pre>
+    </div>
+
+    <div class="code-container">
+        <div class="code-header">Python</div>
+        <pre><code class="language-python">
+# Python example with different syntax elements
+import json
+from datetime import datetime
+
+class DataProcessor:
+    def __init__(self, data_source):
+        self.data_source = data_source
+        self.processed_data = []
+    
+    def process_data(self):
+        """Process the data from the source"""
+        try:
+            with open(self.data_source, 'r') as file:
+                raw_data = json.load(file)
+            
+            for item in raw_data:
+                processed_item = {
+                    'id': item.get('id', 0),
+                    'name': item.get('name', '').strip(),
+                    'timestamp': datetime.now().isoformat(),
+                    'is_valid': bool(item.get('name'))
+                }
+                self.processed_data.append(processed_item)
+                
+        except FileNotFoundError:
+            print(f"File {self.data_source} not found!")
+            return False
+        
+        return len(self.processed_data) > 0
+
+# Usage example
+processor = DataProcessor('data.json')
+success = processor.process_data()
+
+if success:
+    print(f"Processed {len(processor.processed_data)} items")
+        </code></pre>
+    </div>
+
+    <script src="codesyntax.js"></script>
+</body>
+</html>
