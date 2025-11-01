@@ -1,6 +1,9 @@
 scores = [0, 0]  # [player, computer]
 import random
 choices = ['rock', 'paper', 'scissors']
+messages = {
+    'input_prompt': 'Enter rock or paper or scissors to play against the Computer:'
+}
 def getComputerChoice():
     return random.choice(choices)
 
@@ -12,6 +15,7 @@ def determineWinner(playerChoice, computerChoice):
     else:
         return 'Computer Wins!'
 
-#def definePlayerInput()
-#    playerInput = 
-print(determineWinner(input('Enter ...:'), getComputerChoice()))
+def definePlayerInput():
+    playerInput = input(messages['input_prompt']).lower()
+
+print(determineWinner(input(messages['input_prompt']), getComputerChoice()))
