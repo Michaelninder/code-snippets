@@ -19,6 +19,7 @@ def convertString(inputString):
         output += str(countr) + nenner
         inputString = inputString[countr:]
         countr = 0
+    return output
 
 
-convertString(createInput())
+print(convertString(createInput()))
