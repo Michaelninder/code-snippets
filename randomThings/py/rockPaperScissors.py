@@ -1,6 +1,6 @@
 import random
 
-scores = [0, 0]  # [player, computer]
+scores = [0, 0, 0]  # [player, computer, ties]
 choices = ['rock', 'paper', 'scissors']
 messages = {
     'input_prompt': 'Enter rock, paper, or scissors to play against the Computer: ',
@@ -13,12 +13,15 @@ def getComputerChoice():
 
 def determineWinner(playerChoice, computerChoice):
     if playerChoice == computerChoice:
+        scores[2] += 1
         return 'tie'
     elif (playerChoice == 'rock' and computerChoice == 'scissors') or \
          (playerChoice == 'scissors' and computerChoice == 'paper') or \
          (playerChoice == 'paper' and computerChoice == 'rock'):
+        scores[0] += 1
         return 'Player Wins!'
     else:
+        scores[1] += 1
         return 'Computer Wins!'
 
 def handlePlayerInput(playerInput):
@@ -26,7 +29,7 @@ def handlePlayerInput(playerInput):
     if playerInput in ('stop', '/stop'):
         break
     elif playerInput in ('score', '/score'):
-        print(f"Player: {scores[0]}\nComputer: {scores[1]}")
+        print(f"Player: {scores[0]}\nComputer: {scores[1]}\nTies: {scores[2]}")
     elif playerInput in ('help', '/help'):
         print(messages['help'])
     elif playerInput in choices:
