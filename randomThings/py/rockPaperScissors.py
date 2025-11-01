@@ -7,8 +7,7 @@ messages = {
     'Computer: ',
     'invalid_input': "Invalid input. Please type 'rock', 'paper', or "
     "'scissors'.",
-    'help': "Type 'rock', 'paper', or 'scissors' to play.\nType 'score' to "
-    "see the current score.\nType 'stop' to end the game.",
+    'help': "Type 'rock', 'paper', or 'scissors' to play.\nType 'score' to see the current score.\nType 'stop' to end the game.",
 }
 
 
